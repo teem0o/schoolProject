@@ -2,6 +2,7 @@ package com.emis.schoolProject.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -19,11 +20,11 @@ public class Teacher {
     private int age;
     private String subject;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "school_teachers",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "school_id"))
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private List<School> schools;
 
 

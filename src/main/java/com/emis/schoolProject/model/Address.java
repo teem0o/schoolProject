@@ -1,6 +1,7 @@
 package com.emis.schoolProject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -16,6 +17,7 @@ public class Address {
 
     @OneToOne(mappedBy = "address")
     @JsonIgnore
+//    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private School school;
 
     public int getId() {
