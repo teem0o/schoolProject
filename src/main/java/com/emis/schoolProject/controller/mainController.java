@@ -22,26 +22,26 @@ public class mainController {
         return new ResponseEntity<>(teacherService.getTeachers(pageNum, pageSize), HttpStatus.OK);
     }
 
-    @GetMapping("/getSchools/{region}")
+    @GetMapping("/schools/{region}")
     public ResponseEntity<?> getSchools(@PathVariable String region) {
         return new ResponseEntity<>(schoolService.getSchoolsByRegion(region), HttpStatus.OK);
     }
 
 
-    @GetMapping("/updateSubject/{schoolId}/{subject}")
+    @GetMapping("/teachers/updateSubject/{schoolId}/{subject}")
     public ResponseEntity<?> updateSubject(@PathVariable int schoolId, @PathVariable String subject) {
         teacherService.updateTeachersSubject(schoolId, subject);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
-    @RequestMapping("/deleteSchool")
+    @RequestMapping("/schools/deleteSchool")
     public ResponseEntity<?> deleteSchool() {
         schoolService.deleteSchool();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/saveTeacher")
+    @PostMapping("/teachers/saveTeacher")
     public ResponseEntity<?> saveTeacher(@RequestBody Teacher teacher) {
         return new ResponseEntity<>(teacherService.saveTeacher(teacher), HttpStatus.OK);
     }
