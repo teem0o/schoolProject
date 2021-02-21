@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TeacherService {
     @Autowired
-    TeacherRepository teacherRepository;
+    private TeacherRepository teacherRepository;
 
     public Page<Teacher> getTeachers(int pageNum, int pageSize) {
         return teacherRepository.findAll(PageRequest.of(pageNum, pageSize));

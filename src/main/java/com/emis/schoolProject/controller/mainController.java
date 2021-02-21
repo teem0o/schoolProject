@@ -35,7 +35,7 @@ public class mainController {
     }
 
 
-    @GetMapping("/deleteSchool")
+    @RequestMapping("/deleteSchool")
     public ResponseEntity<?> deleteSchool() {
         schoolService.deleteSchool();
         return new ResponseEntity<>(HttpStatus.OK);

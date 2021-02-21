@@ -15,9 +15,9 @@ public class Address {
     private String district;
     private String streetName;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address",fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id")
     @JsonIgnore
-//    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private School school;
 
     public int getId() {
@@ -59,4 +59,5 @@ public class Address {
     public void setSchool(School school) {
         this.school = school;
     }
+
 }

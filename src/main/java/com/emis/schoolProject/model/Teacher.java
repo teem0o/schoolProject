@@ -20,11 +20,10 @@ public class Teacher {
     private int age;
     private String subject;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinTable(name = "school_teachers",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "school_id"))
-    @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private List<School> schools;
 
 
