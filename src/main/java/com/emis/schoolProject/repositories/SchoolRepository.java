@@ -15,7 +15,7 @@ public interface SchoolRepository extends JpaRepository<School, Integer> {
 
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "delete s from school s left join school_teachers st on st.school_id=s.id where st.teacher_id is null;")
+    @Query(nativeQuery = true, value = "delete from school s left join school_teachers st on st.school_id=s.id where st.teacher_id is null;")
     void deleteSchool();
 
     @Query(nativeQuery = true, value = "select * from school s join address a on s.address_id=a.id where a.region=:region")
